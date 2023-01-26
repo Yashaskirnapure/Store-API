@@ -1,14 +1,12 @@
 const {
     getItems,
-    postItem,
-    getSingleItem,
-    addToCart
+    getAllItem
 } = require('../controllers/controller');
 
 const express = require('express');
 const router = express.Router();
 
-router.route('/').get(getItems).post(postItem);
-router.route('/:id').get(getSingleItem).patch(addToCart);
+router.route('/static').get(getItems)
+router.route('/').get(getAllItem);
 
 module.exports = {router};
