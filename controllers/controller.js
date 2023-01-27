@@ -1,4 +1,3 @@
-const { query } = require('express');
 const {Item} = require('../models/item');
 
 const getItems = async (req, res) => {
@@ -31,13 +30,12 @@ const getAllItem = async (req, res) => {
 
         filter = filter.split(',').forEach((item) => {
             const [field, operator, value] = item.split('-');
-            console.log(field);
             if(options.includes(field)){
                 query[field] = {[operator] : Number(value)};
             }
         });
     }
-    
+
     let items = Item.find(query);
 
     //sorting
